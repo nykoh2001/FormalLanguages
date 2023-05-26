@@ -6,19 +6,28 @@ public class Scanner {
     private char ch = ' '; 
     private BufferedReader input;
     private String line = "";
-    private int lineno = 0;
-    private int col = 1;
+    private static int lineno = 0;
+    private static int col = 1;
     private final String letters = "abcdefghijklmnopqrstuvwxyz"
         + "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     private final String digits = "0123456789";
     private final char eolnCh = '\n';
     private final char eofCh = '\004';
+    private static String file = "";
     
 
     public Scanner (String fileName) { // source filename
-    	System.out.println("Begin scanning... programs/" + fileName + "\n");
+        System.out.println("Begin scanning... programs/" + fileName + "\n");
         try {
-            input = new BufferedReader (new FileReader(fileName));
+            input = new BufferedReader(new FileReader(fileName));
+            String fn = "";
+            for (int i = 0; i < fileName.length(); i++) {
+                if (fileName.charAt(i) == '/' || fileName.charAt(i) == '.')
+                    continue;
+                fn = fileName.substring(i);
+                break;
+            }
+            file = fn;
         }
         catch (FileNotFoundException e) {
             System.out.println("File not found: " + fileName);
@@ -69,6 +78,9 @@ public class Scanner {
                     String number = concat(digits);
                     return Token.mkDoubleLiteral("." + number);
                 }
+                else {
+                    System.err.println("Neither int or double literal");
+                }
             }
              else switch (ch) {
             case ' ': case '\t': case '\r': case eolnCh:
@@ -96,7 +108,7 @@ public class Scanner {
                                 ch = nextChar();
                                 comment += ch;
                             }
-                            System.out.println("documented comment:" + comment);
+                            System.out.println("Documented comments------> " + comment);
                         } while (ch != '/');
                     }
     				do {
@@ -115,7 +127,7 @@ public class Scanner {
                             ch = nextChar();
                             comment += ch;
                         } while (ch != eolnCh);
-                        System.out.println("documented comment:" + comment);
+                        System.out.println("Documented comment------> " + comment);
                     }
 	                do {
                         ch = nextChar();    
@@ -276,7 +288,7 @@ public class Scanner {
         Scanner lexer = new Scanner(argv[0]);
         Token tok = lexer.next( );
         while (tok != Token.eofTok) {
-            System.out.println(tok.toString());
+            System.out.println("Token  -----> "+tok.toString() + file + ", " + lineno + ", " + col + ")");
             tok = lexer.next( );
         } 
     } // main
