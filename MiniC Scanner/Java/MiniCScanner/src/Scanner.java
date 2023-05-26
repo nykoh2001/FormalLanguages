@@ -90,13 +90,13 @@ public class Scanner {
                 }
                 
                 break;
-            /*
+
             case '\'':  // char literal
                 char ch1 = nextChar();
                 nextChar(); // get '
                 ch = nextChar();
                 return Token.mkCharLiteral("" + ch1);
-            */    
+ 
             case eofCh: return Token.eofTok;
             
             case '+': 

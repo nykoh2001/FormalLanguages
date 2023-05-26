@@ -74,8 +74,13 @@ public class Token {
         return new Token(TokenType.Identifier, name);
     }
 
-    public static Token mkIntLiteral (String name) {
+    public static Token mkIntLiteral(String name) {
         return new Token(TokenType.IntLiteral, name);
+    }
+    
+    // 추가: char literal 토큰 반환
+    public static Token mkCharLiteral(String name) {
+        return new Token((TokenType.CharLiteral), name);
     }
 
     public String toString ( ) {
