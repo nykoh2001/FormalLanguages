@@ -282,6 +282,7 @@ public class Scanner {
         System.err.println("Error: column " + col + " " + msg);
         // System.exit(1);
         // 수정: 토큰 인식 불가한 경우 다음 토큰 인식 시도 -> 윗줄 주석 처리
+        ch = nextChar();
     }
 
     static public void main ( String[] argv ) {
