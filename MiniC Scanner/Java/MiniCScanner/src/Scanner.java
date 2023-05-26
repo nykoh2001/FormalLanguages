@@ -157,8 +157,8 @@ public class Scanner {
                 ch = nextChar();
                 String str = "";
                 while (ch != '"') {
-                    ch = nextChar();
                     str += ("" + ch);
+                    ch = nextChar();
                 }
                 ch = nextChar();
                 return Token.mkStringLiteral(str);
