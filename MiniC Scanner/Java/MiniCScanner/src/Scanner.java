@@ -57,7 +57,7 @@ public class Scanner {
                 return Token.keyword(spelling);
             } else if (isDigit(ch)) { // int literal
                 String number = concat(digits);
-                if (ch == '.') 
+                if (ch != '.') 
                     return Token.mkIntLiteral(number);
                 // 수정: double literal
                 number += ".";
@@ -86,7 +86,19 @@ public class Scanner {
                 if (ch != '*' && ch != '/') return Token.divideTok;
                 
                 // multi line comment
-                if (ch == '*') { 
+                if (ch == '*') {
+                    // 수정: documented comments 추가
+                    ch = nextChar();
+                    if (ch == '*') {
+                        String comment = "";
+                        do {
+                            while (ch != '*') {
+                                ch = nextChar();
+                                comment += ch;
+                            }
+                            System.out.println("documented comment:" + comment);
+                        } while (ch != '/');
+                    }
     				do {
     					while (ch != '*') ch = nextChar();
     					ch = nextChar();
@@ -94,9 +106,19 @@ public class Scanner {
     				ch = nextChar();
                 }
                 // single line comment
-                else if (ch == '/')  {
+                else if (ch == '/') {
+                    // 수정: single documented comment
+                    ch = nextChar();
+                    if (ch == '/') {
+                        String comment = "" + ch;
+                        do {
+                            ch = nextChar();
+                            comment += ch;
+                        } while (ch != eolnCh);
+                        System.out.println("documented comment:" + comment);
+                    }
 	                do {
-	                    ch = nextChar();
+                        ch = nextChar();    
 	                } while (ch != eolnCh);
 	                ch = nextChar();
                 }
@@ -246,7 +268,8 @@ public class Scanner {
     public void error (String msg) {
         System.err.print(line);
         System.err.println("Error: column " + col + " " + msg);
-        System.exit(1);
+        // System.exit(1);
+        // 수정: 토큰 인식 불가한 경우 다음 토큰 인식 시도 -> 윗줄 주석 처리
     }
 
     static public void main ( String[] argv ) {
