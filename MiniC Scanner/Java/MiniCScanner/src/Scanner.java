@@ -103,36 +103,45 @@ public class Scanner {
                     ch = nextChar();
                     if (ch == '*') {
                         String comment = "";
+                        ch = nextChar();
                         do {
                             while (ch != '*') {
-                                ch = nextChar();
                                 comment += ch;
+                                ch = nextChar();
                             }
-                            System.out.println("Documented comments------> " + comment);
+                            ch = nextChar();
                         } while (ch != '/');
+                        System.out.println("Documented comments------> " + comment + "\n");
+                        ch = nextChar();
                     }
-    				do {
-    					while (ch != '*') ch = nextChar();
-    					ch = nextChar();
-    				} while (ch != '/');
-    				ch = nextChar();
+                    else {
+                        do {
+                            while (ch != '*')
+                                ch = nextChar();
+                            ch = nextChar();
+                        } while (ch != '/');
+                        ch = nextChar();
+                    }
                 }
                 // single line comment
                 else if (ch == '/') {
                     // 수정: single documented comment
                     ch = nextChar();
                     if (ch == '/') {
-                        String comment = "" + ch;
+                        String comment = "";
                         do {
                             ch = nextChar();
                             comment += ch;
                         } while (ch != eolnCh);
-                        System.out.println("Documented comment------> " + comment);
+                        System.out.println("Documented comment------> " + comment + "\n");
+                        ch = nextChar();
                     }
-	                do {
-                        ch = nextChar();    
-	                } while (ch != eolnCh);
-	                ch = nextChar();
+                    else {
+                        do {
+                            ch = nextChar();
+                        } while (ch != eolnCh);
+                        ch = nextChar();
+                    }
                 }
                 
                 break;
