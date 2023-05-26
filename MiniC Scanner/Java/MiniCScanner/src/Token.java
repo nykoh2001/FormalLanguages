@@ -44,6 +44,8 @@ public class Token {
     public static final Token decrementTok = new Token(TokenType.Decrement, "--");
     public static final Token andTok = new Token(TokenType.And, "&&");
     public static final Token orTok = new Token(TokenType.Or, "||");
+    // 수정: ':' 연산자 토큰
+    public static final Token colonTok = new Token(TokenType.Colon, ":");
 
     private TokenType type;
     private String value = "";

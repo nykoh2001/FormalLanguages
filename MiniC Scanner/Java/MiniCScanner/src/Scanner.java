@@ -181,7 +181,15 @@ public class Scanner {
             return Token.commaTok;
                 
             case '&': check('&'); return Token.andTok;
-            case '|': check('|'); return Token.orTok;
+            case '|':
+                check('|');
+                return Token.orTok;
+            
+            // 수정: ':' token 반환
+            case ':':
+                ch = nextChar();
+                return Token.colonTok;
+                
 
             case '=':
                 return chkOpt('=', Token.assignTok,
@@ -195,7 +203,7 @@ public class Scanner {
                                    Token.gteqTok);
             case '!':
                 return chkOpt('=', Token.notTok,
-                                   Token.noteqTok);
+                        Token.noteqTok);
 
             default:  error("Illegal character " + ch); 
             } // switch

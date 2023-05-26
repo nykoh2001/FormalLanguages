@@ -11,5 +11,7 @@ public enum TokenType {
     // 수정: char/string/double literal type 추가
     CharLiteral, StringLiteral, DoubleLiteral,
     // 수정: 키워드 추가
-    Char, Double, For, Do, Goto, Switch, Case, Break, Default
+    Char, Double, For, Do, Goto, Switch, Case, Break, Default,
+    // 수정: ':' 연산자 추가
+    Colon
 }
