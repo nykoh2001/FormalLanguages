@@ -94,9 +94,11 @@ public class Token {
         return new Token(TokenType.DoubleLiteral, name);
     }
 
-    public String toString ( ) {
-        if (type.compareTo(TokenType.Identifier) < 0) return value;
-        return type + "\t" + value;
+    public String toString() {
+        int ti = type.ordinal();
+        // if (type.compareTo(TokenType.Identifier) < 0) return value;
+        // 수정: 모든 토큰을 출력하기 위해 윗줄 주석 처리
+        return value + " (" + ti + ", "+ value + ", ";
     } // toString
 
     public static void main (String[] args) {
