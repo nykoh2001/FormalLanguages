@@ -87,6 +87,11 @@ public class Token {
         return new Token(TokenType.StringLiteral, name);
     }
 
+    // 추가: double literal 토칸 반환
+    public static Token mkDoubleLiteral(String name) {
+        return new Token(TokenType.DoubleLiteral, name);
+    }
+
     public String toString ( ) {
         if (type.compareTo(TokenType.Identifier) < 0) return value;
         return type + "\t" + value;

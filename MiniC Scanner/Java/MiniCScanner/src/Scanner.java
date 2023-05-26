@@ -57,8 +57,20 @@ public class Scanner {
                 return Token.keyword(spelling);
             } else if (isDigit(ch)) { // int literal
                 String number = concat(digits);
-                return Token.mkIntLiteral(number);
-            } else switch (ch) {
+                if (ch == '.') 
+                    return Token.mkIntLiteral(number);
+                // 수정: double literal
+                number += ".";
+                number += concat(digits);
+                return Token.mkDoubleLiteral(number);
+            } else if (ch == '.') { // 수정: double literal
+                ch = nextChar();
+                if (isDigit(ch)) {
+                    String number = concat(digits);
+                    return Token.mkDoubleLiteral("." + number);
+                }
+            }
+             else switch (ch) {
             case ' ': case '\t': case '\r': case eolnCh:
                 ch = nextChar();
                 break;
