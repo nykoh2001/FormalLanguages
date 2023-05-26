@@ -14,6 +14,18 @@ public class Token {
     public static final Token ifTok = new Token(TokenType.If, "if");
     public static final Token intTok = new Token(TokenType.Int, "int");
     public static final Token whileTok = new Token(TokenType.While, "while");
+
+    // 수정: 키워드에 대한 토큰 추가
+    public static final Token charTok = new Token(TokenType.Char, "char");
+    public static final Token doubleTok = new Token(TokenType.Double, "double");
+    public static final Token forTok = new Token(TokenType.While, "for");
+    public static final Token doTok = new Token(TokenType.While, "do");
+    public static final Token gotoTok = new Token(TokenType.While, "goto");
+    public static final Token switchTok = new Token(TokenType.While, "switch");
+    public static final Token caseTok = new Token(TokenType.While, "case");
+    public static final Token breakTok = new Token(TokenType.While, "break");
+    public static final Token defaultTok = new Token(TokenType.While, "default");
+
     public static final Token leftBraceTok = new Token(TokenType.LeftBrace, "{");
     public static final Token rightBraceTok = new Token(TokenType.RightBrace, "}");
     public static final Token leftBracketTok = new Token(TokenType.LeftBracket, "[");
