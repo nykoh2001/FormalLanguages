@@ -97,6 +97,17 @@ public class Scanner {
                 ch = nextChar();
                 return Token.mkCharLiteral("" + ch1);
  
+            // 수정: string literal 추가
+            case '"':
+                ch = nextChar();
+                String str = "";
+                while (ch != '"') {
+                    ch = nextChar();
+                    str += ("" + ch);
+                }
+                ch = nextChar();
+                return Token.mkStringLiteral(str);
+
             case eofCh: return Token.eofTok;
             
             case '+': 

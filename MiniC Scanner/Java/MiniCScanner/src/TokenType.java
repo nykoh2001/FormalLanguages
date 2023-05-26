@@ -8,6 +8,6 @@ public enum TokenType {
     Not, NotEqual, Plus, Minus, Multiply, Reminder,
     Increment, Decrement,
     Divide, And, Or, Identifier, IntLiteral,
-    // 수정: char literal type 추가
-    CharLiteral
+    // 수정: char/string literal type 추가
+    CharLiteral, StringLiteral
 }

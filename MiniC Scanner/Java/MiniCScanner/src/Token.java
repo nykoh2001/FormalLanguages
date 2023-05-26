@@ -80,7 +80,11 @@ public class Token {
     
     // 추가: char literal 토큰 반환
     public static Token mkCharLiteral(String name) {
-        return new Token((TokenType.CharLiteral), name);
+        return new Token(TokenType.CharLiteral, name);
+    }
+    // 추가: string literal 토큰 반환
+    public static Token mkStringLiteral(String name) {
+        return new Token(TokenType.StringLiteral, name);
     }
 
     public String toString ( ) {
