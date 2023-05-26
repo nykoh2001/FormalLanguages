@@ -69,7 +69,6 @@ public class Scanner {
                 if (ch != '.') 
                     return Token.mkIntLiteral(number);
                 // 수정: double literal
-                number += ".";
                 number += concat(digits);
                 return Token.mkDoubleLiteral(number);
             } else if (ch == '.') { // 수정: double literal
