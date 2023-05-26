@@ -9,9 +9,9 @@ public enum TokenType {
     Equals, Less, LessEqual, Greater, GreaterEqual,
     Not, NotEqual, Plus, Minus, Multiply, Reminder,
     Increment, Decrement,
+    // 수정: ':' 연산자 추가
+    Colon,
     Divide, And, Or, Identifier, IntLiteral,
     // 수정: char/string/double literal type 추가
     CharLiteral, StringLiteral, DoubleLiteral,
-    // 수정: ':' 연산자 추가
-    Colon
 }
