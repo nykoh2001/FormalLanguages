@@ -9,5 +9,7 @@ public enum TokenType {
     Increment, Decrement,
     Divide, And, Or, Identifier, IntLiteral,
     // 수정: char/string/double literal type 추가
-    CharLiteral, StringLiteral, DoubleLiteral
+    CharLiteral, StringLiteral, DoubleLiteral,
+    // 수정: 키워드 추가
+    Char, Double, For, Do, Goto, Switch, Case, Break, Default
 }
